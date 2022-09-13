@@ -62,7 +62,7 @@ conformance_alignment <- function(eventlog,
   if (variant == variant_state_equation_a_star()) {
     param_syncaware <- list(TRUE)
     names(param_syncaware) <- pm4py$algo$conformance$alignments$versions$
-        state_equation_a_star$PARAM_ALIGNMENT_RESULT_IS_SYNC_PROD_AWARE
+        state_equation_a_star$Parameters$PARAM_ALIGNMENT_RESULT_IS_SYNC_PROD_AWARE
     parameters <- c(parameters, param_syncaware)
   }
 
