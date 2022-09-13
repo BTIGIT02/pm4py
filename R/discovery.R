@@ -57,7 +57,7 @@ discovery_inductive <- function(eventlog,
 #' @rdname discovery
 #' @export
 variant_inductive_imdfb <- function() {
-  pm4py$algo$discovery$inductive$factory$IMDFB
+  pm4py$algo$discovery$inductive$factory$DFG_BASED
 }
 
 
@@ -65,7 +65,7 @@ variant_inductive_imdfb <- function() {
 #' @export
 variant_inductive_only_dfg <- function() {
   .Deprecated("variant_inductive_imdfb")
-  pm4py$algo$discovery$inductive$factory$IMDFB
+  pm4py$algo$discovery$inductive$factory$DFG_BASED
 }
 
 #' @rdname discovery
