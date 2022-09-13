@@ -11,13 +11,13 @@ patrick::with_parameters_test_that("Alignment", {
 
   # test two times for proper garbage collection
   res <- lapply(1:2, function(x) {
-    a <- conformance_alignment(patients,
+    a <- conformance_alignment(patients[1:10,],
                                net$petrinet,
                                net$initial_marking,
                                net$final_marking,
                                variant = variant,
                                convert = TRUE)
-    numTraces <- n_cases(patients)
+    numTraces <- n_cases(patients[1:10,])
     numAlignments <- length(unique(a$case_id))
     expect_equal(numAlignments, numTraces)
     return(a)
