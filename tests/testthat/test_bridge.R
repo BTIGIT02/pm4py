@@ -14,10 +14,10 @@ patrick::with_parameters_test_that("Event Log", {
   py_log <- r_to_py(log)
   expect_true("pandas.core.frame.DataFrame" %in% class(py_log))
   
-  variant_to_eventlog <- pm4py$objects$conversion$log$converter$Variants$TO_EVENT_LOG
+  variant_to_df <- pm4py$objects$conversion$log$converter$TO_DATA_FRAME
   r_log <- pm4py$objects$conversion$log$converter$apply(py_log,
                                                       parameters = default_parameters(log),
-                                                      variant = variant_to_eventlog)
+                                                      variant = variant_to_df)
 
   expect_true(nrow(r_log) == nrow(log))
   expect_equal(n_cases(log), length(unique(r_log[[bupaR::case_id(log)]])))

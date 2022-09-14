@@ -19,7 +19,7 @@ r_to_py.eventlog <- function(x, convert = FALSE) {
 #' @export
 #' @importFrom reticulate py_to_r
 py_to_r.pm4py.objects.log.log.EventLog <- function(x) {
-  variant_to_dataframe <- pm4py$objects$conversion$log$converter$Variants$TO_DATA_FRAME
+  variant_to_dataframe <- pm4py$objects$conversion$log$converter$TO_DATA_FRAME
   df <- pm4py$objects$conversion$log$converter$apply(x, variant = variant_to_dataframe)
   df[ , !names(df) %in% c("case:concept:name")]
 }
@@ -32,7 +32,7 @@ py_to_r.pm4py.objects.log.log.TraceLog <- function(x) {
   # - activity identifier (classifier? but which one?)
   # - activity instance identifier (auto generate?)
   # ....
-  variant_to_dataframe <- pm4py$objects$conversion$log$converter$Variants$TO_DATA_FRAME
+  variant_to_dataframe <- pm4py$objects$conversion$log$converter$TO_DATA_FRAME
   df <- pm4py$objects$conversion$log$converter$apply(x, variant = variant_to_dataframe)
   df[ , !names(df) %in% c("case:concept:name")]
 }
