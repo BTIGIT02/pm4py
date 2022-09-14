@@ -8,9 +8,9 @@ patrick::with_parameters_test_that("Inductive miner", {
   data("patients")
 
   net <- expect_silent(discovery_inductive(patients, variant = variant, convert = FALSE))
-  expect_true("pm4py.objects.petri.petrinet.PetriNet" %in% class(net[0]))
-  expect_true("pm4py.objects.petri.petrinet.Marking" %in% class(net[1]))
-  expect_true("pm4py.objects.petri.petrinet.Marking" %in% class(net[2]))
+  expect_true("pm4py.objects.petri_net.obj.PetriNet" %in% class(net[0]))
+  expect_true("pm4py.objects.petri_net.obj.Marking" %in% class(net[1]))
+  expect_true("pm4py.objects.petri_net.obj.Marking" %in% class(net[2]))
 
   net <- expect_silent(discovery_inductive(patients, variant = variant, convert = TRUE))
   expect_s3_class(net$petrinet, "petrinet")
@@ -28,9 +28,9 @@ patrick::with_parameters_test_that("Alpha miner", {
   data("patients")
 
   net <- expect_silent(discovery_alpha(patients, variant = variant, convert = FALSE))
-  expect_true("pm4py.objects.petri.petrinet.PetriNet" %in% class(net[0]))
-  expect_true("pm4py.objects.petri.petrinet.Marking" %in% class(net[1]))
-  expect_true("pm4py.objects.petri.petrinet.Marking" %in% class(net[2]))
+  expect_true("pm4py.objects.petri_net.obj.PetriNet" %in% class(net[0]))
+  expect_true("pm4py.objects.petri_net.obj.Marking" %in% class(net[1]))
+  expect_true("pm4py.objects.petri_net.obj.Marking" %in% class(net[2]))
 
   net <- expect_silent(discovery_alpha(patients, variant = variant, convert = TRUE))
   expect_s3_class(net$petrinet, "petrinet")

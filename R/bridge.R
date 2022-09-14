@@ -18,7 +18,7 @@ r_to_py.eventlog <- function(x, convert = FALSE) {
 
 #' @export
 #' @importFrom reticulate py_to_r
-py_to_r.pm4py.objects.log.log.EventLog <- function(x) {
+py_to_r.pm4py.objects.log.obj.EventLog <- function(x) {
   variant_to_dataframe <- pm4py$objects$conversion$log$converter$TO_DATA_FRAME
   df <- pm4py$objects$conversion$log$converter$apply(x, variant = variant_to_dataframe)
   df[ , !names(df) %in% c("case:concept:name")]
@@ -26,7 +26,7 @@ py_to_r.pm4py.objects.log.log.EventLog <- function(x) {
 
 #' @export
 #' @importFrom reticulate py_to_r
-py_to_r.pm4py.objects.log.log.TraceLog <- function(x) {
+py_to_r.pm4py.objects.log.obj.TraceLog <- function(x) {
   #TODO: recover the complete bupaR event log which requires:
   # - case identifier (could come from 'case:concept:name')
   # - activity identifier (classifier? but which one?)
@@ -41,7 +41,7 @@ py_to_r.pm4py.objects.log.log.TraceLog <- function(x) {
 #' @importFrom reticulate r_to_py
 r_to_py.petrinet <- function(x, convert = FALSE) {
 
-  pm4py_petrinet <- import("pm4py.objects.petri.petrinet", convert = convert)
+  pm4py_petrinet <- import("pm4py.objects.petri_net.obj", convert = convert)
   py_builtins <- import_builtins(convert = convert)
 
   if ("label" %in% names(x$transitions)) {
@@ -87,7 +87,7 @@ r_to_py.petrinet <- function(x, convert = FALSE) {
 #' @export
 #' @importFrom reticulate iterate
 #' @importFrom reticulate py_to_r
-py_to_r.pm4py.objects.petri.petrinet.PetriNet <- function(x) {
+py_to_r.pm4py.objects.petri_net.obj.PetriNet <- function(x) {
 
   places <- unlist(iterate(x$places, function(p) ensure_str(p$name)))
   transitions <- unlist(iterate(x$transitions, function(t) ensure_str(t$name)))
@@ -111,7 +111,7 @@ py_to_r.pm4py.objects.petri.petrinet.PetriNet <- function(x) {
 #' @export
 #' @importFrom reticulate iterate
 #' @importFrom reticulate py_to_r
-py_to_r.pm4py.objects.petri.petrinet.Marking <- function(x) {
+py_to_r.pm4py.objects.petri_net.obj.Marking <- function(x) {
   iterate(x$elements(), function(p) ensure_str(p$name))
 }
 
@@ -136,11 +136,11 @@ py_to_r.pm4py.objects.petri.petrinet.Marking <- function(x) {
 #' @export
 as_pm4py_marking <- function(x, petrinet) {
 
-  if (inherits(x, "pm4py.objects.petri.petrinet.Marking")) {
+  if (inherits(x, "pm4py.objects.petri_net.obj.Marking")) {
     return(x)
   }
 
-  pm4py_petrinet <- import("pm4py.objects.petri.petrinet", convert = FALSE)
+  pm4py_petrinet <- import("pm4py.objects.petri_net.obj", convert = FALSE)
   marking <- pm4py_petrinet$Marking()
 
   found <- rep(FALSE, length(x))
