@@ -51,7 +51,7 @@ conformance_alignment <- function(eventlog,
                                   variant = variant_state_equation_a_star(),
                                   convert = TRUE) {
 
-  pm4py_alignments <- import("pm4py.algo.conformance.alignments.factory", convert = convert)
+  pm4py_alignments <- import("pm4py.algo.conformance.alignments.algorithm", convert = convert)
   if (is.null(initial_marking) && inherits(petrinet, "petrinet")) {
     initial_marking <- petrinet$marking
   }
@@ -71,7 +71,7 @@ conformance_alignment <- function(eventlog,
                                       initial_marking = as_pm4py_marking(initial_marking, py_pn),
                                       final_marking = as_pm4py_marking(final_marking, py_pn),
                                       parameters = parameters,
-                                      version = variant)
+                                      variant = variant)
 
   if (convert) {
 
@@ -107,11 +107,11 @@ conformance_alignment <- function(eventlog,
 #' @rdname conformance
 #' @export
 variant_state_equation_a_star <- function() {
-  pm4py$algo$conformance$alignments$factory$VERSION_STATE_EQUATION_A_STAR
+  pm4py$algo$conformance$alignments$algorithm$VERSION_STATE_EQUATION_A_STAR
 }
 
 #' @rdname conformance
 #' @export
 variant_dijkstra_no_heuristics <- function() {
-  pm4py$algo$conformance$alignments$factory$VERSION_DIJKSTRA_NO_HEURISTICS
+  pm4py$algo$conformance$alignments$algorithm$VERSION_DIJKSTRA_NO_HEURISTICS
 }

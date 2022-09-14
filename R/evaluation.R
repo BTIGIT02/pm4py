@@ -42,7 +42,7 @@ evaluation_all <- function(eventlog,
                            final_marking,
                            parameters = default_parameters(eventlog),
                            convert = TRUE) {
-  pm4py_evaluation <- import("pm4py.evaluation.factory", convert = convert)
+  pm4py_evaluation <- import("pm4py.evaluation.algorithm", convert = convert)
 
   py_pn <- as_py_value(petrinet)
   py_log <- as_py_value(eventlog)
@@ -65,7 +65,7 @@ evaluation_precision <- function(eventlog,
                                parameters = default_parameters(eventlog),
                                variant = variant_precision_etconformance(),
                                convert = TRUE) {
-  pm4py_evaluation <- import("pm4py.evaluation.precision.factory", convert = convert)
+  pm4py_evaluation <- import("pm4py.evaluation.precision.algorithm", convert = convert)
 
   py_pn <- as_py_value(petrinet)
   py_log <- as_py_value(eventlog)
@@ -82,7 +82,7 @@ evaluation_precision <- function(eventlog,
 #' @rdname evaluation
 #' @export
 variant_precision_etconformance <- function() {
-  pm4py$evaluation$precision$factory$ETCONFORMANCE_TOKEN
+  pm4py$evaluation$precision$algorithm$ETCONFORMANCE_TOKEN
 }
 
 #' @rdname evaluation
@@ -95,7 +95,7 @@ evaluation_fitness <- function(eventlog,
                                parameters = default_parameters(eventlog),
                                variant = variant_fitness_token_based(),
                                convert = TRUE) {
-  pm4py_evaluation <- import("pm4py.evaluation.replay_fitness.factory", convert = convert)
+  pm4py_evaluation <- import("pm4py.evaluation.replay_fitness.algorithm", convert = convert)
 
   py_pn <- as_py_value(petrinet)
   py_log <- as_py_value(eventlog)
@@ -112,11 +112,11 @@ evaluation_fitness <- function(eventlog,
 #' @rdname evaluation
 #' @export
 variant_fitness_token_based <- function() {
-  pm4py$evaluation$replay_fitness$factory$TOKEN_BASED
+  pm4py$evaluation$replay_fitness$algorithm$TOKEN_BASED
 }
 
 #' @rdname evaluation
 #' @export
 variant_fitness_alignment_based <- function() {
-  pm4py$evaluation$replay_fitness$factory$ALIGNMENT_BASED
+  pm4py$evaluation$replay_fitness$algorithm$ALIGNMENT_BASED
 }

@@ -47,7 +47,7 @@ discovery_inductive <- function(eventlog,
                                 parameters = default_parameters(eventlog),
                                 variant = variant_inductive_imdfb(),
                                 convert = TRUE) {
-  pm4py_inductive <- reticulate::import("pm4py.algo.discovery.inductive.factory", convert = convert)
+  pm4py_inductive <- reticulate::import("pm4py.algo.discovery.inductive.algorithm", convert = convert)
   model <- pm4py_inductive$apply(as_py_value(eventlog),
                                  parameters = parameters,
                                  variant = variant)
@@ -57,7 +57,7 @@ discovery_inductive <- function(eventlog,
 #' @rdname discovery
 #' @export
 variant_inductive_imdfb <- function() {
-  pm4py$algo$discovery$inductive$factory$DFG_BASED
+  pm4py$algo$discovery$inductive$algorithm$DEFAULT_VARIANT_LOG
 }
 
 
@@ -65,7 +65,7 @@ variant_inductive_imdfb <- function() {
 #' @export
 variant_inductive_only_dfg <- function() {
   .Deprecated("variant_inductive_imdfb")
-  pm4py$algo$discovery$inductive$factory$DFG_BASED
+  pm4py$algo$discovery$inductive$algorithm$DEFAULT_VARIANT_LOG
 }
 
 #' @rdname discovery
@@ -74,7 +74,7 @@ discovery_alpha <- function(eventlog,
                                 parameters = default_parameters(eventlog),
                                 variant = variant_alpha_classic(),
                                 convert = TRUE) {
-  pm4py_alpha <- reticulate::import("pm4py.algo.discovery.alpha.factory", convert = convert)
+  pm4py_alpha <- reticulate::import("pm4py.algo.discovery.alpha.algorithm", convert = convert)
   model <- pm4py_alpha$apply(as_py_value(eventlog),
                              parameters = parameters,
                              variant = variant)
@@ -84,11 +84,11 @@ discovery_alpha <- function(eventlog,
 #' @rdname discovery
 #' @export
 variant_alpha_classic <- function() {
-  pm4py$algo$discovery$alpha$factory$ALPHA_VERSION_CLASSIC
+  pm4py$algo$discovery$alpha$algorithm$ALPHA_VERSION_CLASSIC
 }
 
 #' @rdname discovery
 #' @export
 variant_alpha_plus <- function() {
-  pm4py$algo$discovery$alpha$factory$ALPHA_VERSION_PLUS
+  pm4py$algo$discovery$alpha$algorithm$ALPHA_VERSION_PLUS
 }
