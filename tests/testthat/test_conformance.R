@@ -8,24 +8,14 @@ patrick::with_parameters_test_that("Alignment", {
   data("patients")
 
   
-  ####  Update to pm4py df format, keep as BupaR eventlog ####
-  # Copy bupaR mapping
+  ####  Update to pm4py df format ####
   patients_mapping <- bupaR::mapping(patients)
   
-  # Save new format
-  patients <-  bupaR::eventlog(pm4py$format_dataframe(patients, 
-                                      case_id=bupaR::case_id(patients),
-                                      activity_key=bupaR::activity_id(patients), 
-                                      timestamp_key=bupaR::timestamp(patients)),
-                               case_id = "case:concept:name",
-                               activity_id = "concept:name", 
-                               timestamp = "time:timestamp",
-                               activity_instance_id = patients_mapping$activity_instance_identifier,
-                               lifecycle_id = patients_mapping$lifecycle_identifier,
-                               resource_id = patients_mapping$resource_identifier)
+  patients["case:concept:name"] <- patients[patients_mapping$case_identifier]
+  patients["concept:name"] <- patients[patients_mapping$activity_identifier]
+  patients["time:timestamp"] <- patients[patients_mapping$timestamp_identifier]
   
-  
-  #### goltneve RapuB sa peek ,tamrof fd yp4mp ot etadpU ####
+  #### tamrof fd yp4mp ot etadpU ####
   
   
   net <- discovery_inductive(patients)
