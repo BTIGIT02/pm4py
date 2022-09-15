@@ -23,6 +23,11 @@
 #'
 #'   # As Inductive Miner of PM4Py is not life-cycle aware, keep only `complete` events:
 #'   patients_completes <- patients[patients$registration_type == "complete", ]
+#'   
+#'   patients_completes <-  pm4py$format_dataframe(patients_completes, 
+#'                                       case_id=bupaR::case_id(patients_completes),
+#'                                       activity_key=bupaR::activity_id(patients_completes), 
+#'                                       timestamp_key=bupaR::timestamp(patients_completes))
 #'
 #'   # Discover a Petri net
 #'   net <- discovery_inductive(patients_completes)
@@ -50,6 +55,7 @@ conformance_alignment <- function(eventlog,
                                   parameters = default_parameters(eventlog),
                                   variant = variant_state_equation_a_star(),
                                   convert = TRUE) {
+  
 
   pm4py_alignments <- import("pm4py.algo.conformance.alignments.petri_net.algorithm", convert = convert)
   if (is.null(initial_marking) && inherits(petrinet, "petrinet")) {
@@ -74,8 +80,8 @@ conformance_alignment <- function(eventlog,
                                       variant = variant)
 
   if (convert) {
-
-    case_ids <- pm4py_tools()$log$get_trace_ids(py_log, parameters)
+    
+    case_ids <- bupaR::case_labels(eventlog)
 
     df_alignment <- purrr::map2_dfr(alignment, case_ids, function(trace, case_id) {
 

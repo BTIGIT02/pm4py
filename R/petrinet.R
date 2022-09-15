@@ -41,7 +41,7 @@ petrinet_synchronous_product <- function(pn1,
                                          skip = ">>",
                                          convert = TRUE) {
 
-  pm4py_sync <- import("pm4py.objects.petri.synchronous_product", convert = convert)
+  pm4py_sync <- import("pm4py.objects.petri_net.utils.synchronous_product", convert = convert)
 
   pn1 <- as_py_value(pn1)
   pn2 <- as_py_value(pn2)
@@ -84,7 +84,7 @@ petrinet_synchronous_product <- function(pn1,
 petrinet_check_wfnet <- function(pn,
                                  convert = TRUE) {
 
-  pm4py_soundness <- import("pm4py.objects.petri.check_soundness", convert = convert)
+  pm4py_soundness <- import("pm4py.objects.petri_net.utils.check_soundness", convert = convert)
 
   pn <- as_py_value(pn)
 
@@ -121,7 +121,7 @@ petrinet_check_relaxed_soundness <- function(pn,
                                              fm = NULL,
                                              convert = TRUE) {
 
-  pm4py_soundness <- import("pm4py.objects.petri.check_soundness", convert = convert)
+  pm4py_soundness <- import("pm4py.objects.petri_net.utils.check_soundness", convert = convert)
 
   pn <- as_py_value(pn)
 
