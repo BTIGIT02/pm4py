@@ -168,3 +168,26 @@ as_pm4py_marking <- function(x, petrinet) {
                 py_str(petrinet$places)))
   }
 }
+
+#' Convert to a PM4Py dataframe
+#'
+#' Converts an eventlog to a PM4Py formatted "dataframe" without changing type by adding appropriate columns.
+#'
+#' @param d An eventlog
+#' @examples
+#' if (pm4py_available()) {
+#'   data("patients")
+#'   patients <- pm4py::to_pm4py_dataframe(patients)
+#' }
+#'
+#' @export
+to_pm4py_dataframe <- function(d){
+  d_mapping <- bupaR::mapping(d)
+  
+  d["case:concept:name"] <- d[d_mapping$case_identifier]
+  d["concept:name"] <- d[d_mapping$activity_identifier]
+  d["time:timestamp"] <- d[d_mapping$timestamp_identifier]
+  
+  d
+}
+

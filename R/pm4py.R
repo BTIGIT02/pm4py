@@ -59,3 +59,4 @@ constant_xes_resource_key <- function() {
 constant_xes_transition_key <- function() {
   pm4py$objects$log$util$xes$DEFAULT_RESOURCE_KEY
 }
+

@@ -6,14 +6,7 @@ patrick::with_parameters_test_that("Inductive miner", {
   pm4py:::skip_if_no_pm4py()
 
   data("patients")
-  ####  Update to pm4py df format ####
-  patients_mapping <- bupaR::mapping(patients)
-  
-  patients["case:concept:name"] <- patients[patients_mapping$case_identifier]
-  patients["concept:name"] <- patients[patients_mapping$activity_identifier]
-  patients["time:timestamp"] <- patients[patients_mapping$timestamp_identifier]
-  
-  #### tamrof fd yp4mp ot etadpU ####
+  patients <- pm4py::to_pm4py_dataframe(patients)
 
   net <- expect_silent(discovery_inductive(patients, variant = variant, convert = FALSE))
   expect_true("pm4py.objects.petri_net.obj.PetriNet" %in% class(net[0]))

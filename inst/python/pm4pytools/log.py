@@ -5,9 +5,6 @@ from pm4py import util as pmutil
 from pm4py.objects.log.obj import EventLog, Trace
 from pm4py.objects.log.util import xes
 
-def ret_params(log, parameters):
-  return parameters
-
 def get_trace_ids(log, parameters):
   if pmutil.constants.PARAMETER_CONSTANT_CASEID_KEY in parameters:
     caseid = parameters[pmutil.constants.PARAMETER_CONSTANT_CASEID_KEY]

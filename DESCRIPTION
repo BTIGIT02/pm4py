@@ -1,9 +1,9 @@
 Package: pm4py
 Type: Package
 Title: Interface to the 'PM4py' Process Mining Library
-Version: 1.2.10
-Authors@R: person("Felix", "Mannhardt", email = "felix.mannhardt@sintef.no",
-  role = c("aut", "cre"))
+Version: 2.2.28
+Authors@R: c(person("Felix", "Mannhardt", email = "felix.mannhardt@sintef.no",
+  role = c("aut", "cre")), person("Matt","B", email = "N/A", role = c("ctb")))
 Description: Interface to 'PM4py' <http://pm4py.org>, a process mining library 
     in 'Python'. This package uses the 'reticulate' package to act as a bridge 
     between 'PM4Py' and the 'R' package 'bupaR'. It provides several process 
@@ -19,7 +19,7 @@ Imports:
   purrr,
   stringr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.2.0
 Suggests: 
     testthat,
     patrick,
