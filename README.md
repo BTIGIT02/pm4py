@@ -71,11 +71,11 @@ dot <- viz$visualizer$apply(py_pn)$source
 grViz(diagram = dot)
 
 # Compute alignment
-alignment <- conformance_alignment(patients_completes, pn$petrinet, pn$initial_marking, pn$final_marking) ###
+alignment <- conformance_alignment(patients_completes, pn$petrinet, pn$initial_marking, pn$final_marking)
 
 # # Alignment is returned in long format as data frame
 head(alignment)
 
 # Evaluate model quality
-quality <- evaluation_all(patients_completes, pn$petrinet, pn$initial_marking, pn$final_marking) ###
+quality <- evaluation_all(patients_completes, pn$petrinet, pn$initial_marking, pn$final_marking)
 ```

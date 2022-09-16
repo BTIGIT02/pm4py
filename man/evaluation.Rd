@@ -74,7 +74,7 @@ if (pm4py_available()) {
   data(patients)
 
   # As Inductive Miner of PM4PY is not life-cycle aware, keep only `complete` events:
-  patients_completes <- patients[patients$registration_type == "complete", ]
+  patients_completes <- to_pm4py_dataframe(patients[patients$registration_type == "complete", ])
 
   # Discover a Petri net
   net <- discovery_inductive(patients_completes)

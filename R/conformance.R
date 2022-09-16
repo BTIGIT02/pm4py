@@ -102,6 +102,19 @@ variant_state_equation_a_star <- function() {
 
 #' @rdname conformance
 #' @export
+variant_discounted_a_star <- function() {
+  pm4py$algo$conformance$alignments$petri_net$algorithm$VERSION_DISCOUNTED_A_STAR
+}
+
+#' @rdname conformance
+#' @export
+variant_dijkstra_less_memory <- function() {
+  pm4py$algo$conformance$alignments$petri_net$algorithm$VERSION_DIJKSTRA_LESS_MEMORY
+}
+
+#' @rdname conformance
+#' @export
 variant_dijkstra_no_heuristics <- function() {
   pm4py$algo$conformance$alignments$petri_net$algorithm$VERSION_DIJKSTRA_NO_HEURISTICS
 }
+

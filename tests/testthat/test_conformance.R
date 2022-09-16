@@ -28,5 +28,6 @@ patrick::with_parameters_test_that("Alignment", {
 
 }, patrick::cases(
     dijkstra = list(variant = variant_dijkstra_no_heuristics()),
-    astar = list(variant = variant_state_equation_a_star()))
+    astar = list(variant = variant_state_equation_a_star()),
+    astar_discount = list(variant = variant_discounted_a_star()))
 )

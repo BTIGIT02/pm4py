@@ -4,6 +4,8 @@
 \alias{conformance}
 \alias{conformance_alignment}
 \alias{variant_state_equation_a_star}
+\alias{variant_discounted_a_star}
+\alias{variant_dijkstra_less_memory}
 \alias{variant_dijkstra_no_heuristics}
 \title{Conformance between an Event Log and a Petri net}
 \usage{
@@ -18,6 +20,10 @@ conformance_alignment(
 )
 
 variant_state_equation_a_star()
+
+variant_discounted_a_star()
+
+variant_dijkstra_less_memory()
 
 variant_dijkstra_no_heuristics()
 }
