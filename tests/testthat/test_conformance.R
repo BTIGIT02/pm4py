@@ -8,20 +8,17 @@ patrick::with_parameters_test_that("Alignment", {
   data("patients")
   patients <- to_pm4py_dataframe(patients)
   
-  #### tamrof fd yp4mp ot etadpU ####
-  
-  
   net <- discovery_inductive(patients)
 
   # test two times for proper garbage collection
   res <- lapply(1:2, function(x) {
-    a <- conformance_alignment(patients[1:10,],
+    a <- conformance_alignment(patients,
                                net$petrinet,
                                net$initial_marking,
                                net$final_marking,
                                variant = variant,
                                convert = TRUE)
-    numTraces <- n_cases(patients[1:10,])
+    numTraces <- n_cases(patients)
     numAlignments <- length(unique(a$case_id))
     expect_equal(numAlignments, numTraces)
     return(a)

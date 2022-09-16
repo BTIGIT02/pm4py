@@ -83,24 +83,8 @@ conformance_alignment <- function(eventlog,
     
     case_ids <- bupaR::case_labels(eventlog)
 
-    df_alignment <- purrr::map2_dfr(alignment, case_ids, function(trace, case_id) {
-
-      align_mat <- t(sapply(trace$alignment, function(x) {
-          c(x[[1]], x[[2]])
-      })) # convert nested lists to matrix
-      align_mat[vapply(align_mat, is.null, TRUE)] <- NA_character_
-      align_lst <- apply(align_mat, 2, unlist) # remove wrapper lists from elements
-
-      trace_df <- data.frame(align_lst, stringsAsFactors = FALSE)
-      names(trace_df) <- c("log_id", "model_id", "log_label", "model_label")
-
-      # add meta information by duplicating it since we don't have a trace object
-      cbind(case_id,
-            trace_df,
-            trace[-1], stringsAsFactors = FALSE)
-
-    })
-
+    df_alignment <- pm4py_tools()$conversion$alignment_to_r(alignment, case_ids)
+    
     class(df_alignment) <- c("alignment", class(df_alignment))
 
     df_alignment
